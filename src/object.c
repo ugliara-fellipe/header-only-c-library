@@ -1,4 +1,4 @@
-/* 
+/*
 no-way-c is a library that improves C17 standard library
 Copyright (C) 2021  Fellipe Augusto Ugliara
 
@@ -17,3 +17,21 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #include "object.h"
+
+obj_header_t *obj_get_header(obj_t *self) {
+  return (obj_header_t *)(((obj_t *)self) - sizeof(obj_header_t));
+}
+
+void obj_ref_by_attach(obj_t *self, void **address_of_ref_by) {
+  obj_header_t *header = obj_get_header(self);
+}
+
+void obj_ref_by_detach(obj_t *self, void **address_of_ref_by) {
+  obj_header_t *header = obj_get_header(self);
+}
+
+void obj_ref_by_dealloc(obj_t *self) {
+  obj_header_t *header = obj_get_header(self);
+  if (header->refs_by != NULL) {
+  }
+}
