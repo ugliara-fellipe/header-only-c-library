@@ -16,9 +16,19 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include <assert.h>
+#ifndef KEYWORDS_H
+#define KEYWORDS_H
 
-#include "toolbelt.h"
+#define or ||
+#define and &&
+#define not !
+#define less <
+#define equal ==
+#define greater >
+#define less_equal <=
+#define greater_equal >=
 
-int main() {
-}
+#define for_range(index, init, end, step)                                      \
+  for (int index = init; index < end; index = index + step)
+
+#endif
