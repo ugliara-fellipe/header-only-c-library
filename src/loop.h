@@ -16,16 +16,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#ifndef KEYWORDS_H
-#define KEYWORDS_H
+#ifndef LOOP_H
+#define LOOP_H
 
-#define or ||
-#define and &&
-#define not !
-#define less <
-#define equal ==
-#define greater >
-#define less_equal <=
-#define greater_equal >=
+#define for_range(index, init, end, step, body)                                \
+  for (int index = init; index < end; index = index + step)                    \
+  body
 
 #endif
