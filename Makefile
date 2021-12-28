@@ -6,7 +6,7 @@ OBJ := build
 SOURCES := $(wildcard $(SRC)/*.c)
 OBJECTS := $(patsubst $(SRC)/%.c, $(OBJ)/%, $(SOURCES))
 
-all: env $(OBJECTS)
+all: clean env $(OBJECTS)
 
 env:
 	mkdir -p build
