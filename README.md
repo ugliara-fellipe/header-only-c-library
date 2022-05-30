@@ -1,4 +1,5 @@
-# no-way-c
-A: - Objects in C are amazing.  B: - No way!
+# Header-Only C Library
+
+header-only-c-library is a library that improves C17 standard library
 
 C header only library
