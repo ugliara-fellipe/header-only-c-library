@@ -22,8 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#include "loop.h"
 #include <assert.h>
 
-#include "loop.h"
-
-int main() {}
+int main() {
+  int i = 1;
+  for_range(index, 0, 5, 1, { 
+    i = i + index; 
+  })
+  assert(i == 1 + (0 + 1 + 2 + 3 + 4));
+}

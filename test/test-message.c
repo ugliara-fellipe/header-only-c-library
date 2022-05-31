@@ -22,9 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include <assert.h>
-
 #include "message.h"
+#include <assert.h>
 
 int main() {
   msg_info("message 1 %d\n", 10);

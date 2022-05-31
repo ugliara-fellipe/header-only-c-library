@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2021 Fellipe Augusto Ugliara
+Copyright (c) 2022 Fellipe Augusto Ugliara
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,36 +22,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include "object.h"
+#include "exception.h"
 #include <assert.h>
+#include <stdio.h>
 
-typedef struct test_obj_s {
-  int i;
-} test_obj_t;
-
-obj_header(test_obj_t);
-
-static void test_obj_alloc(test_obj_t *self, obj_args_a) {
-  self->i = obj_next_arg(int);
-}
-
-static void test_obj_dealloc(test_obj_t *self) {}
-
-static void test_obj_copy(test_obj_t *self, test_obj_t *copy) {}
-
-static void test_obj_show(test_obj_t *self) {}
-
-static bool test_obj_equal(test_obj_t *self, test_obj_t *other) {}
-
-obj_source(test_obj_t, test_obj_alloc, test_obj_dealloc, test_obj_copy,
-           test_obj_show, test_obj_equal);
-
-void test_obj_print(test_obj_t *self) { assert(self->i == 34); }
+enable_exceptions;
 
 int main() {
-  test_obj_t *obj = obj_alloc(test_obj_t, 34);
-  obj_show(obj);
-  test_obj_print(obj);
-  obj_dealloc(obj);
-  return EXIT_SUCCESS;
+  int i = 11;
+
+  try({ 
+    raise(i - 10); 
+  }) catch (exception < 5, {
+    i++;
+    retry;
+  }) catch (exception, { 
+    assert(exception == 5); 
+  }) finally();
+
+  i = 15;
+  try({ 
+    retry; 
+  }) catch (exception == RETRY_EXCEPTION, {
+    if (i < 16) {
+      assert(i == 15);
+      i = 16;
+      retry;
+    }
+    assert(i == 16);
+  }) finally();
+
+  raise(1);
 }
