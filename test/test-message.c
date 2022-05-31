@@ -24,10 +24,13 @@ SOFTWARE.
 
 #include "message.h"
 #include <assert.h>
+#include <stdlib.h>
 
 int main() {
   msg_info("message 1 %d\n", 10);
   msg_crash("message 2 %d\n", 20);
   msg_error("message 3 %d\n", 30);
   msg_warning("message 4 %d\n", 40);
+
+  return EXIT_SUCCESS;
 }

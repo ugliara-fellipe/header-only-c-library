@@ -24,11 +24,14 @@ SOFTWARE.
 
 #include "loop.h"
 #include <assert.h>
+#include <stdlib.h>
 
 int main() {
   int i = 1;
-  for_range(index, 0, 5, 1, { 
+  for_range(index, 0, 5, 1,
     i = i + index; 
-  })
+  )
   assert(i == 1 + (0 + 1 + 2 + 3 + 4));
+
+  return EXIT_SUCCESS;
 }

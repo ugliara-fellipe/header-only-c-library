@@ -25,32 +25,35 @@ SOFTWARE.
 #include "exception.h"
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 enable_exceptions;
 
 int main() {
   int i = 11;
 
-  try({ 
+  try(
     raise(i - 10); 
-  }) catch (exception < 5, {
+  ) catch (exception < 5,
     i++;
     retry;
-  }) catch (exception, { 
+  ) catch (exception,
     assert(exception == 5); 
-  }) finally();
+  ) finally();
 
   i = 15;
-  try({ 
+  try( 
     retry; 
-  }) catch (exception == RETRY_EXCEPTION, {
+  ) catch (exception == RETRY_EXCEPTION,
     if (i < 16) {
       assert(i == 15);
       i = 16;
       retry;
     }
     assert(i == 16);
-  }) finally();
+  ) finally();
 
   raise(1);
+
+  return EXIT_SUCCESS;
 }

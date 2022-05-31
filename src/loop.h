@@ -26,7 +26,8 @@ SOFTWARE.
 #define LOOP_H
 
 #define for_range(index, init, end, step, body)                                \
-  for (int index = init; index < end; index = index + step)                    \
-  body
+  for (int index = init; index < end; index = index + step) {                  \
+    body                                                                       \
+  }
 
 #endif

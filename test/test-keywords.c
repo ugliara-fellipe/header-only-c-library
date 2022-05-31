@@ -24,5 +24,18 @@ SOFTWARE.
 
 #include "keywords.h"
 #include <assert.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-int main() {}
+int main() {
+  assert(true or false);
+  assert(true and true);
+  assert(not false);
+  assert(1 less 2);
+  assert(3 equal 3);
+  assert(4 greater 2);
+  assert(2 less_equal 2);
+  assert(5 greater_equal 3);
+
+  return EXIT_SUCCESS;
+}
